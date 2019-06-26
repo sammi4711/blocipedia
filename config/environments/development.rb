@@ -65,18 +65,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  #config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
-  config.action_mailer.default_url_options = { host: 'mail.google.com', port: 587}
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      ENV['SENDMAIL_USERNAME'],
-    password:       ENV['SENDMAIL_PASSWORD'],
-    domain:         ENV['MAIL_HOST'],
+    config.action_mailer.smtp_settings = {
+    user_name:      Rails.application.secrets.gmail_user,
+    password:       Rails.application.secrets.gmail_password,
+    domain:         'gmail.com',
     address:       'smtp.gmail.com',
-    port:          '587',
+    port:          587,
     authentication: :plain,
-    enable_starttls_auto: true
+    #enable_starttls_auto: true
   }
-  #config.action_mailer.sender = 'samantha.acampora@gmail.com'
-  config.mailer_sender = 'samantha.acampora@gmail.com'
 end
