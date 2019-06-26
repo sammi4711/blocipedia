@@ -72,7 +72,7 @@ Rails.application.configure do
     password:       ENV['SENDMAIL_PASSWORD'],
     domain:         ENV['MAIL_HOST'],
     address:       'smtp.gmail.com',
-    port:          587,
+    port:          '587',
     authentication: :plain,
     enable_starttls_auto: true
   }
