@@ -2,9 +2,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
-         :confirmable, :authentication_keys => {email: true, login: false} #authentication_keys: [:login]
+         :recoverable, :rememberable, :validatable, :confirmable
 
+
+
+
+
+=begin
   attr_accessor :username, :email, :password, :password_confirmation, :remember_me
   attr_accessor :login
 
@@ -24,5 +28,5 @@ class User < ActiveRecord::Base
       where(conditions.to_h).first
     end
   end
-
+=end
 end
