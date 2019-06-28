@@ -109,14 +109,17 @@ RSpec.describe WikisController, type: :controller do
     end
   end
 
-
-=begin
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+  describe "DELETE destroy" do
+    it "deletes the wiki" do
+      delete :destroy, params: { id: my_wiki.id }
+      count = Post.where({id: my_wiki.id}).size
+      expect(count).to eq 0
+    end
+ 
+    it "redirects to wikis index" do
+      delete :destroy, params: { id: my_wikis.id }
+      expect(response).to redirect_to wikis_path
     end
   end
-=end
 
 end
