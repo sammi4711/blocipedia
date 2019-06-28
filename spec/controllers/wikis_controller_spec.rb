@@ -48,14 +48,24 @@ RSpec.describe WikisController, type: :controller do
     end
   end
 
-=begin
-  describe "GET #show" do
+  describe "GET show" do
     it "returns http success" do
-      get :show
+      get :show, params: { id: my_wiki.id }
       expect(response).to have_http_status(:success)
+    end
+
+    it "renders the #show view" do
+      get :show, params: { id: my_wiki.id }
+      expect(response).to render_template :show
+    end
+ 
+    it "assigns my_wiki to @wiki" do
+      get :show, params: { id: my_wiki.id }
+      expect(assigns(:post)).to eq(my_wiki)
     end
   end
 
+=begin
   describe "GET #new" do
     it "returns http success" do
       get :new

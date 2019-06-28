@@ -4,6 +4,7 @@ class WikisController < ApplicationController
   end
 
   def show
+    @wiki = Wiki.find(params[:id])
   end
 
   def new
@@ -15,10 +16,11 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new
+    @wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
 
-    if @wiki.save
+    if @wiki.save!
       flash[:notice] = "Wiki was saved."
       redirect_to @wiki 
     else
