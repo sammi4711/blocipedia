@@ -8,19 +8,23 @@
 
 require 'random_data'
 
-user = User.create!(
-  email: "example@blocipedia.com",
-  password: "password123"
-)
+10.times do 
+  User.create!(
+    email: Faker::Internet.email,
+    password: "helloworld"
+  )
+  end 
+  users = User.all 
 
-
-5.times do
+20.times do
   Wiki.create!(
-    title:  RandomData.random_sentence,
-    body:   RandomData.random_paragraph
+    user: users.sample,
+    title:  Faker::Hacker.ingverb,
+    body:   Faker::Quote.matz 
   )
 end
 wikis = Wiki.all
   
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
