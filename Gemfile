@@ -80,3 +80,7 @@ gem 'devise'
 gem 'pundit'
 
 gem 'faker'
+
+gem 'stripe'
+
+gem 'figaro', '1.0'
