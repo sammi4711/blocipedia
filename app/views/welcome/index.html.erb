@@ -11,6 +11,6 @@
   <div class="downgrade">
     <% if current_user.role == 'premium_member'%>
       <p>Not enjoying your Premium membership? Click below to downgrade.</p>
-      <%= button_to "Are you sure you want to Click Me?"%>
+      <%= button_to "Are you sure you want to Click Me?", charges_path %>
     <% end %>
   </div>
