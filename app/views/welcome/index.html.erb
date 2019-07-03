@@ -1,4 +1,16 @@
 <h1>Welcome to Blocipedia!</h1>
 <p>*Find our wikis at localhost:3000/wikis!*</p>
-<p>Want to get more out of Blocipedia? Find out about our PREMIUM MEMBERSHIPS below!</p>
-<%= button_to "Click Me!", charges_path %>
+
+  <div class="upgrade">
+    <% if current_user.role == 'standard_member'%>
+      <p>Want to get more out of Blocipedia? Find out about our PREMIUM MEMBERSHIPS below!</p>
+      <%= button_to "Click Me!", charges_path %>
+    <% end %>
+  </div>
+
+  <div class="downgrade">
+    <% if current_user.role == 'premium_member'%>
+      <p>Not enjoying your Premium membership? Click below to downgrade.</p>
+      <%= button_to "Are you sure you want to Click Me?"%>
+    <% end %>
+  </div>

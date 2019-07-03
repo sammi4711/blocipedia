@@ -22,8 +22,8 @@ require 'random_data'
     title:  Faker::Hacker.ingverb,
     body:   Faker::Quote.matz 
   )
-end
-wikis = Wiki.all
+  end
+  wikis = Wiki.all
   
 puts "Seed finished"
 puts "#{User.count} users created"

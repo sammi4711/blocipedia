@@ -5,6 +5,11 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+
+    if current_user.role == 'standard_member' && @wiki.private == true 
+      @wiki.title = "[Private Wiki]"
+      @wiki.body = "[You are not authorized to view the contents of this wiki. Upgrade to a Premium Membership to have access to private wikis.]"
+    end
   end
 
   def new
@@ -20,6 +25,12 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+
+    if current_user.role == 'standard_member'
+      @wiki.update_attribute(:private, false)
+    else
+      @wiki.update_attribute(:private, true)
+    end
 
     if @wiki.save!
       flash[:notice] = "Wiki was saved."
