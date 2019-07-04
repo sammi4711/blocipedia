@@ -1,5 +1,5 @@
 <h1>Welcome to Blocipedia!</h1>
-<p>*Find our wikis at localhost:3000/wikis!*</p>
+<p><%= link_to "View Wikis", wikis_path, class: 'btn btn-success' %></p>
 
   <div class="upgrade">
     <% if current_user.role == 'standard_member'%>

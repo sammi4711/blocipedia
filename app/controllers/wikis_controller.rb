@@ -25,12 +25,16 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
+
+=begin
     if current_user.role == 'standard_member'
       @wiki.update_attribute(:private, false)
     else
       @wiki.update_attribute(:private, true)
     end
+=end
 
     if @wiki.save!
       flash[:notice] = "Wiki was saved."
@@ -46,6 +50,7 @@ class WikisController < ApplicationController
     @wiki.user = current_user 
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save! 
       flash[:notice] = "Wiki was updated."

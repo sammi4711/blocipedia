@@ -33,6 +33,7 @@ class ChargesController < ApplicationController
 
   def downgrade
     current_user.update_attribute(:role, 'standard_member')
+    current_user.wikis.update_all(private: false)
     
     flash[:notice] = "Your account has been changed back to a standard free membership."
     redirect_to new_charge_path 

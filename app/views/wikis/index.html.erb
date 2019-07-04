@@ -1,5 +1,5 @@
 <h1>All Wikis</h1>
-<p>Create new wikis at: localhost:3000/wikis/new</p>
+<p><%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %></p>
 <% @wikis.each do |wiki| %>
   <div class="media">
     <div class="media-body">
