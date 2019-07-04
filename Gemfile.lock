@@ -186,6 +186,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redcarpet (3.4.0)
     regexp_parser (1.5.1)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -301,6 +302,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-controller-testing
   rails_12factor
+  redcarpet
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   selenium-webdriver
