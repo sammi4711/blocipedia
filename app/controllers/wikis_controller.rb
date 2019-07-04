@@ -36,7 +36,7 @@ class WikisController < ApplicationController
     end
 =end
 
-    if @wiki.save!
+    if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to @wiki 
     else
@@ -52,7 +52,7 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
 
-    if @wiki.save! 
+    if @wiki.save
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki 
     else
@@ -64,7 +64,7 @@ class WikisController < ApplicationController
   def destroy 
     @wiki = Wiki.find(params[:id])
 
-    if @wiki.destroy!
+    if @wiki.destroy
       flash[:notice] = "Your wiki, \"#{@wiki.title}\", was deleted successfully."
       redirect_to wikis_path 
     else
