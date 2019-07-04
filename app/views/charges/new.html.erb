@@ -6,6 +6,6 @@
   <% else %>
     <h3>Click below to downgrade back to a Standard account.</h3>
     <p>You will lose your ability to create or view private wikis.</p>
-    <button><%= link_to 'Downgrade', charges_path, method: :downgrade %></button>
+    <button><%= link_to 'Downgrade', charges_downgrade_path, method: :delete %></button>
   <% end %>
 <% end %>

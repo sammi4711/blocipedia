@@ -35,7 +35,7 @@ class ChargesController < ApplicationController
     current_user.update_attribute(:role, 'standard_member')
     
     flash[:notice] = "Your account has been changed back to a standard free membership."
-    redirect_to root_path(current_user)
+    redirect_to new_charge_path 
   end
 
 end

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :users, :only => [:index, :show]
   resources :charges, only: [:new, :create]
-
+  
+  delete 'charges/downgrade'
 
   #get 'welcome/index'
   #get 'welcome/about'
