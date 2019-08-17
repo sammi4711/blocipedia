@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :wikis
+  has_many :collaborators
+  has_many :wikis, through: :collaborators
 
   before_save { self.role ||= :standard_member }
 

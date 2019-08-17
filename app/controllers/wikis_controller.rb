@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all 
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -47,7 +47,7 @@ class WikisController < ApplicationController
 
   def update 
     @wiki = Wiki.find(params[:id])
-    @wiki.user = current_user 
+    @wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
