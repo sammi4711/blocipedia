@@ -1,13 +1,11 @@
 <h1>All Wikis</h1>
 <p><%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %></p>
+
 <% @wikis.each do |wiki| %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to wiki.title, wiki %>
-        <%# <% if current_user.role == 'standard_member' && wiki.private == true %>
-          <%# <%= wiki.title = "[Private]" %>
-        <%# <% end %>
       </h4>
     </div>
   </div>

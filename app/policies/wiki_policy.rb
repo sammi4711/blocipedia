@@ -13,16 +13,16 @@ class WikiPolicy < ApplicationPolicy
     end
 
     def resolve
-      wikies = []
+      wikis = []
       if user.admin?
         wikis = scope.all
       elsif user.premium_member?
         all_wikis = scope.all
-      #  all_wikis.each do |wiki|
-      #    if wiki.private == false || wiki.user == user || wiki.users.include?(user)
-      #      wikis << wiki
-      #    end
-      #  end
+        all_wikis.each do |wiki|
+          if wiki.private == false || wiki.user == user || wiki.users.include?(user)
+            wikis << wiki
+          end
+        end
       else
         all_wikis = scope.all
         wikis = []
