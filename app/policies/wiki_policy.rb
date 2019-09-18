@@ -8,15 +8,32 @@ class WikiPolicy < ApplicationPolicy
       @scope = scope
     end
 
+    def index?
+      true
+    end
+
     def resolve
-      wikis = []
-      if user.role == 'admin'
+      wikies = []
+      if user.admin?
         wikis = scope.all
+      elsif user.premium_member?
+        all_wikis = scope.all
+      #  all_wikis.each do |wiki|
+      #    if wiki.private == false || wiki.user == user || wiki.users.include?(user)
+      #      wikis << wiki
+      #    end
+      #  end
       else
-        scope.where(
-          private: [false, nil] || wiki.user.email == current_user.email || wiki.collaborators.include?(user)
-        )
+        all_wikis = scope.all
+        wikis = []
+        all_wikis.each do |wiki|
+          if wiki.private == false
+            wikis << wiki
+          end
+        end
       end
+      wikis
     end
   end
+
 end

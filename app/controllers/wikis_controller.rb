@@ -1,15 +1,14 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @wikis = policy_scope(Wiki)
+    #@wikis = WikiPolicy::Scope.new(current_user, Wiki).resolve
   end
 
   def show
     @wiki = Wiki.find(params[:id])
 
-    if current_user.role == 'standard_member' && @wiki.private == true 
-      @wiki.title = "[Private Wiki]"
-      @wiki.body = "[You are not authorized to view the contents of this wiki. Upgrade to a Premium Membership to have access to private wikis.]"
-    end
   end
 
   def new
@@ -26,15 +25,9 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
-
-
-=begin
-    if current_user.role == 'standard_member'
-      @wiki.update_attribute(:private, false)
-    else
-      @wiki.update_attribute(:private, true)
+    if @wiki.user.standard_member?
+      @wiki.private = false 
     end
-=end
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."

@@ -5,9 +5,9 @@
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to wiki.title, wiki %>
-        <% if current_user.role == 'standard_member' && wiki.private == true %>
-          <%= wiki.title = "[Private]" %>
-        <% end %>
+        <%# <% if current_user.role == 'standard_member' && wiki.private == true %>
+          <%# <%= wiki.title = "[Private]" %>
+        <%# <% end %>
       </h4>
     </div>
   </div>

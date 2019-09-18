@@ -23,5 +23,28 @@
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
     <% end %>
+    <%= form_tag([@wiki, @collaborator], method: :get) do %>
+      <div class="form-group">
+      <p>Add Collaborators?</p>
+          <%= text_field_tag :add_collaborator %>
+          <%= submit_tag "Add", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+
+    <%# <div> %>
+      <%# <h5><strong>Collaborators for this wiki:</strong></h5> %>
+      <%# <% @wiki.users.each do |user| %>
+      <%# <div class="media"> %>
+        <%# <div class="media-body"> %>
+          <%# <h4 class="media-heading"> %>
+            <%# <%= collaborator.user.email %>
+            <%# <%= link_to "Remove", [collaborator.wiki, collaborator], method: :delete, class: "btn btn-danger" %>
+          <%# </h4> %>
+        <%# </div> %>
+      <%# </div> %>
+      <%# <% end %>
+
+    </div>
   </div>
 </div>
