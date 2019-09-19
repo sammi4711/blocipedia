@@ -26,10 +26,11 @@
     <%= form_tag([@wiki, @collaborator], method: :get) do %>
       <div class="form-group">
       <p>Add Collaborators?</p>
-          <%= text_field_tag :add_collaborator %>
-          <%= submit_tag "Add", class: 'btn btn-success' %>
+          <%= link_to "Add Collaborator", wiki_collaborators_path(@wiki) %>
       </div>
     <% end %>
+
+
 
     </div>
   </div>

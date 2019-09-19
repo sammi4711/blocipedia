@@ -3,10 +3,13 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:index, :show]
   resources :charges, only: [:new, :create]
-  resources :collaborators 
   resources :wikis 
+  resources :wikis do
+    resources :collaborators
+  end
   
-  resources :collaborators, only: [:create, :destroy]
+#  resources :collaborators, only: [:create, :destroy]
+#  resources :collaborators 
 
   
   delete 'charges/downgrade'
