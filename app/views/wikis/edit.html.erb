@@ -26,7 +26,7 @@
     <%= form_tag([@wiki, @collaborator], method: :get) do %>
       <div class="form-group">
       <p>Add Collaborators?</p>
-          <%= link_to "Add Collaborator", wiki_collaborators_path(@wiki) %>
+          <%= link_to "Add Collaborator", new_wiki_collaborator_path(@wiki) %>
       </div>
     <% end %>
 

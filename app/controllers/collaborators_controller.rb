@@ -1,13 +1,12 @@
 class CollaboratorsController < ApplicationController
   def new
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.new
-  
   end
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.where(username: params[:email]).take
+    @user = User.where(email: params[:email]).take
 
     if @user == nil
       flash[:error] = "That user could not be found."
@@ -16,7 +15,7 @@ class CollaboratorsController < ApplicationController
       collaborator = @wiki.collaborators.build(user_id: @user.id)
     end
 
-    if @collaborator.save!
+    if @collaborator.save
       flash[:notice] = "Collaborator added."
       redirect_to @wiki
     else
