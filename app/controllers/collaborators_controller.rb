@@ -32,11 +32,11 @@ class CollaboratorsController < ApplicationController
     end
   end
 
-  def edit
-    @collaborator = Collaborator.find(params[:email])
+  def destroy
+    @collaborator = Collaborator.find(params[:id])
     @wiki = @collaborator.wiki
 
-    if @collaborator.edit
+    if @collaborator.destroy
       flash[:notice] = "Collaborator has been removed."
       redirect_to edit_wiki_path(@wiki)
     else

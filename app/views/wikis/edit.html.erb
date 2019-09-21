@@ -29,7 +29,7 @@
       <p>Add Collaborators?</p>
         <%= link_to "Add Collaborator", new_wiki_collaborator_path(@wiki) %>
       <p>Delete Collaborators?</p>
-        <%= link_to "Delete Collaborator", edit_wiki_collaborator_path(@wiki) %>
+        <%= link_to "Delete Collaborator", collaborators_destroy_path(@wiki) %>
       </div>
       <% end %>
     <% end %>

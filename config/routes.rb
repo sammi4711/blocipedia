@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :wikis 
   resources :wikis do
-    resources :collaborators
+    resources :collaborators 
   end
   
-#  resources :collaborators, only: [:create, :destroy]
-#  resources :collaborators 
 
-  
+  delete 'collaborators/destroy'
   delete 'charges/downgrade'
 
   get 'about' => 'welcome#about'
