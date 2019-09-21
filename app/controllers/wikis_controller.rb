@@ -3,7 +3,6 @@ class WikisController < ApplicationController
 
   def index
     @wikis = policy_scope(Wiki)
-    #@wikis = WikiPolicy::Scope.new(current_user, Wiki).resolve
   end
 
   def show

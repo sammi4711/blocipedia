@@ -1,0 +1,9 @@
+<% @collaborators.each do |collaborator| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= collaborator.user.email %>
+      </h4>
+    </div>
+  </div>
+<% end %>

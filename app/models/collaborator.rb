@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Collaborator < ActiveRecord::Base
 #class Collaborator < ApplicationRecord
   belongs_to :wiki
   belongs_to :user

@@ -1,5 +1,10 @@
 class CollaboratorsController < ApplicationController
   
+  def index
+    @wiki = Wiki.find(params[:wiki_id])
+    @collaborators = @wiki.collaborators.all
+  end
+  
   def new
     @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.new
@@ -7,12 +12,12 @@ class CollaboratorsController < ApplicationController
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.where(email: params[:email]).take
+    @user = User.find_by_email(params[:collaborator][:user])
     @collaborator = Collaborator.new
 
     if @user == nil
       flash[:error] = "That user could not be found."
-      redirect_to edit_wiki_path(@wiki)
+      return redirect_to edit_wiki_path(@wiki)
     else
       @collaborator.wiki = @wiki
       @collaborator.user = @user 
@@ -20,27 +25,25 @@ class CollaboratorsController < ApplicationController
 
     if @collaborator.save
       flash[:notice] = "Collaborator added."
-      redirect_to @wiki
+      return redirect_to @wiki
     else
       flash[:alert] = "Error occured. Please try again."
-      redirect_to @wiki
+      return redirect_to @wiki
     end
   end
 
-=begin
-  def destroy
-    @collaborator = Collaborator.find(params[:id])
-    @collaborator_user = User.find(@collaborator.user_id)
+  def edit
+    @collaborator = Collaborator.find(params[:email])
+    @wiki = @collaborator.wiki
 
-    if @collaborator.destroy
-      flash[:notice] = "#{@collaborator_user.email} was removed as a collaborator."
+    if @collaborator.edit
+      flash[:notice] = "Collaborator has been removed."
       redirect_to edit_wiki_path(@wiki)
     else
       flash[:alert] = "There was an error removing this collaborator. Please try again."
       redirect_to edit_wiki_path(@wiki)
     end
   end
-=end 
 
   private
 
