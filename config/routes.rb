@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   end
   
 
-  delete 'collaborators/destroy'
+  get 'collaborators/:id', to: 'collaborators#show'
+  #delete 'collaborators/destroy'
   delete 'charges/downgrade'
 
   get 'about' => 'welcome#about'

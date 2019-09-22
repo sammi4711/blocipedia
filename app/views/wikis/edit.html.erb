@@ -28,6 +28,16 @@
       <div class="form-group">
       <p>Add Collaborators?</p>
         <%= link_to "Add Collaborator", new_wiki_collaborator_path(@wiki) %>
+
+        <%= @collaborators.each do |collaborator| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= collaborator.user.email %>
+              </h4>
+            </div>
+          </div>
+        <% end %>
       <p>Delete Collaborators?</p>
         <%= link_to "Delete Collaborator", collaborators_destroy_path(@wiki) %>
       </div>
