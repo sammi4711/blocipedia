@@ -5,11 +5,7 @@
     <p><%= markdown(@wiki.body) %></p>
   </div>
   <div class="col-md-4">
-    <% if current_user.role == 'standard_member' && @wiki.private == true %>
-      Head back to the home page to upgrade your membership now!
-    <% else %>
       <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
       <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
-    <% end %>
   </div>
 </div>
