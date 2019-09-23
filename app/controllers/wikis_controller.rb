@@ -16,7 +16,6 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-    #@collaborator = Collaborator.find(params[:user_email])
     @collaborators = @wiki.collaborators.all
   end
 
@@ -44,7 +43,9 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
+    if @wiki.user.premium_member?
+      @wiki.private = params[:wiki][:private]
+    end
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
