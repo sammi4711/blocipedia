@@ -30,11 +30,11 @@
           </div>
         <% end %>
     <% end %>
-    <% if @wiki.private == true %>
-      <p>Add Collaborators?</p>
-      <%= link_to "Add Collaborator", new_wiki_collaborator_path(@wiki) %>
-
+    <% if current_user.premium_member? %>
+      Add Collaborators? <%= link_to "CLICK HERE!", new_wiki_collaborator_path(@wiki) %>
+      <p>---</p>
       <% @collaborators.each do |collaborator| %>
+      <p>Current Collaborators:</p>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
